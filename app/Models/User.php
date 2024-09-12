@@ -7,10 +7,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Auth\MustVerifyEmail;
+use Spatie\Permission\Traits\HasRoles; // Add this line
 
 class User extends Authenticatable implements MustVerifyEmailContract
 {
-    use HasApiTokens, Notifiable, MustVerifyEmail;
+    use HasApiTokens, Notifiable, MustVerifyEmail, HasRoles; // Add HasRoles here
 
     /**
      * The attributes that are mass assignable.

@@ -3,14 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Store; // Assuming you have a Store model
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Notifications\CustomVerifyEmailNotification;
 
-class StoreCenterController extends Controller
+class StoreController extends Controller
 {
+    public function dashboard()
+    {
+        // Retrieve all stores and pass them to the Dashboard view
+        $stores = Store::all();
+
+        // Render the Dashboard component with the stores data
+        return Inertia::render('Dashboard', [
+            'stores' => $stores,
+        ]);
+    }
+
     public function create()
     {
         return Inertia::render('StoreCenter');
